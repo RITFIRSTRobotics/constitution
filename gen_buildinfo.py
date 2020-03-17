@@ -18,8 +18,8 @@ def main():
         pass
 
     # finally, print the footers
-    print("\\lfoot{git: \\texttt{"+ git_hash +"} on \\texttt{" + git_version + "}}")
-    print("\\rfoot{\\today}")
+    print("\\lfoot{git hash: \\texttt{"+ git_hash +"}, rev: \\texttt{" + git_version + "}}")
+    print("\\rfoot{Built: \\today}")
 
 
 if __name__ == "__main__":
