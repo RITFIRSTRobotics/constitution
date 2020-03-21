@@ -30,3 +30,4 @@ At this point, you should create a pull request in GitHub to merge your branch/f
 After your amendment has been proposed, it will be voted on (again, see the constitutuion for more details about this process).
 If you amendment passes, congratulations!
 The process is almost finished, all you need to do is have someone with permission (i.e. the club president) approve your pull request.
+This person should then make a new release of the constitution (in GitHub) and distrubute the new constitution wherever necessary.
