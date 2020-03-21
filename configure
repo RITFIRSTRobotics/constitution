@@ -27,6 +27,6 @@ if ! [ -x "$(command -v pdflatex)" ]; then
 fi
 
 # Install GhostScript (used for compression)
-if ! [-x "$(command -v gs)" ]; then
+if ! [ -x "$(command -v gs)" ]; then
     sudo apt-get install -y ghostscript
 fi
