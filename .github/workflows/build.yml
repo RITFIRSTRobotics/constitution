@@ -16,9 +16,7 @@ jobs:
 
     steps:
       # checkout the repository
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: '0'
+      - uses: actions/checkout@v1
 
       # install required packages
       - name: Configure
@@ -31,5 +29,5 @@ jobs:
       # upload the resulting PDF
       - uses: actions/upload-artifact@v1
         with:
-          name: artifacts
+          name: constitution
           path: constitution.pdf
