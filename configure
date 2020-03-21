@@ -1,0 +1,32 @@
+#!/bin/bash
+# constitution package installer
+#
+# Automatically installs/configures the required packages needed to build PDFs using pdflatex
+#
+# @author Connor Henley, @thatging3rkid
+
+sudo apt-get update -qq
+
+# Install MiKTeX (if necessary)
+if ! [ -x "$(command -v pdflatex)" ]; then
+    sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 \
+        --recv-keys D6BC243565B2087BC3F897C9277A7293F59E4889 > /dev/null
+    echo "deb https://mirrors.rit.edu/CTAN/systems/win32/miktex/setup/deb `lsb_release -c -s` universe" | \
+        sudo tee /etc/apt/sources.list.d/miktex.list > /dev/null
+    sudo apt-get update -qq && sudo apt-get install -y miktex
+
+    # check for error
+    if ! [ $? == 0 ]; then
+        exit 1;
+    fi
+
+    # Setup MiKTeX and enable auto-package installation
+    sudo miktexsetup --shared=yes finish && sudo initexmf --admin --set-config-value [MPM]AutoInstall=1
+    sudo mpm --admin --set-repository=http://mirrors.rit.edu/CTAN/systems/win32/miktex/tm/packages/
+    sudo mpm --admin --update-db # update database, should fix auto-package installation
+fi
+
+# Install GhostScript (used for compression)
+if ! [-x "$(command -v gs)" ]; then
+    sudo apt-get install -y ghostscript
+fi

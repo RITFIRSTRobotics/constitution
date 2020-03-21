@@ -1,0 +1,4 @@
+# constitution git attributes
+
+# always pull ./configure with lf endings, since bash doesn't like crlf
+/configure eol=lf

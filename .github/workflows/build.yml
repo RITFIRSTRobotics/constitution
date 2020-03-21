@@ -1,0 +1,33 @@
+# constitution GitHub Action config
+#
+# Action that runs on every push
+#     - builds the document and generates a PDF
+#     - uploads the resulting PDF as an artifact
+#
+# @version v1.0
+# @author Connor Henley, @thatging3rkid
+name: "Build PDF"
+
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest # use latest since this won't be run often (backup: 18.04)
+
+    steps:
+      # checkout the repository
+      - uses: actions/checkout@v2
+
+      # install required packages
+      - name: Configure
+        run: ./configure
+
+      # build the PDF
+      - name: Build
+        run: make constitution.pdf
+
+      # upload the resulting PDF
+      - uses: actions/upload-artifact@v1
+        with:
+          name: artifacts
+          path: constitution.pdf
