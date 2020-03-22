@@ -16,7 +16,9 @@ jobs:
 
     steps:
       # checkout the repository
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
+        # get all history for all tags and branches, allowing for integrated version info
+        run: git fetch --prune --unshallow
 
       # install required packages
       - name: Configure

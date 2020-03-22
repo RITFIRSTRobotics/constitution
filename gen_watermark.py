@@ -20,7 +20,7 @@ def main():
         print("\\usepackage{draftwatermark}")
         print("\\SetWatermarkText{\\texttt{DRAFT}}")
         print("\\SetWatermarkLightness{0.85}")
-        print("\\SetWatermarkScale{8}")
+        print("\\SetWatermarkScale{1.58}") # note: scale depends on font choice
     pass
 
 if __name__ == "__main__":
