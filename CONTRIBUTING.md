@@ -18,6 +18,7 @@ I'd recommend starting with a printed copy of the current constitution and annot
 After you know what you want to change, make a new branch (or fork the repository) and start putting your changes in the `constitution.tex` file.
 Be sure to try and use the existing packages/styling (this will lead to less issues down the road).
 It's also best practice to put each sentence on a line, this will allow git generate better diffs.
+And make sure to put your name in the section of authors!
 
 ## 3. Proposal
 
