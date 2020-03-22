@@ -20,7 +20,7 @@ jobs:
       - run: git fetch --depth=1 origin +refs/tags/*:refs/tags/* # fetch all tags
       - run: git fetch --no-tags --prune --depth=1 origin +refs/heads/*:refs/remotes/origin/* # fetch all branches
       - run: git fetch --prune --unshallow # fetch history for tags and branches
-      - run: git checkout HEAD^ # get back onto HEAD
+      - run: git checkout ${GITHUB_REF##*/} # checkout the code that we're currently working on
 
       # install required packages
       - name: Configure
