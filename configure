@@ -24,7 +24,8 @@ if ! [ -x "$(command -v pdflatex)" ]; then
     sudo miktexsetup --shared=yes finish && sudo initexmf --admin --set-config-value [MPM]AutoInstall=1
     sudo mpm --admin --set-repository=http://mirrors.rit.edu/CTAN/systems/win32/miktex/tm/packages/
     sudo mpm --admin --update-db # update database, should fix auto-package installation
-    sudo mpm --install=cm-super # try to make the font smoother
+    #mpm --install=cm-super # try to make the font smoother
+    #initexmf --mkmaps
 fi
 
 # Install GhostScript (used for compression)
