@@ -1,16 +1,21 @@
 # RIT FIRST Constitution
 #
 # Makefile by Connor Henley
+LATEX_ARGS=-halt-on-error
 PDFLATEX_ARGS=-halt-on-error
 GS_ARGS=-sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dNOPAUSE -dQUIET -dBATCH -dPrinted=false
 
 all: constitution.pdf
 
-constitution-raw.pdf: constitution.tex buildinfo.tex watermark.tex
+constitution-raw.pdf: constitution.tex constitution-raw.aux buildinfo.tex watermark.tex
 	@# build the main pdf, which must be run with a different jobname (output file name),
 	@# which must be stripped of the last .pdf in order to not come out as .pdf.pdf,
 	@# and timezone must be set so the date is correct
 	export TZ='America/New_York' && pdflatex $(PDFLATEX_ARGS) -jobname=$(subst .pdf,,$@) $<
+
+constitution-raw.aux: constitution.tex buildinfo.tex watermark.tex
+	@# build the aux file, which is used to generate references
+	latex $(LATEX_ARGS) -jobname=$(subst .aux,,$@) $<
 
 constitution.pdf: constitution-raw.pdf
 	@# compress the pdf that pdflatex created
@@ -27,4 +32,4 @@ FORCE: ; @# build rule that will never generate output, making any dependent rul
 
 .PHONY: clean
 clean:
-	-/bin/rm -f buildinfo.tex watermark.tex *.log *.pdf *.aux
+	-/bin/rm -f buildinfo.tex watermark.tex *.log *.pdf *.aux *.dvi
