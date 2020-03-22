@@ -2,6 +2,12 @@
 
 This guide is not intended for the constitutional side of how to write an amendment, but instead for the `git` and `LaTeX` side of writing the amendment.
 
+## A note: the output of automated builds
+
+This project is setup to automatically build a PDF on every push to any branch of the repostiory.
+It should be noted that these PDFs are the "official" PDFs and should be saved internally and distrbuted to club members (whenever necessary).
+In order to get the PDFs, first go to the [Actions tab](https://github.com/RITFIRSTRobotics/constitution/actions), pick the [Build PDF workflow](https://github.com/RITFIRSTRobotics/constitution/actions?query=workflow%3A%22Build+PDF%22), then pick a commit (note that the output files will represent the changes made in this commit only), and finally download the constitution artifact.
+
 ## 1. Background
 
 First of all, make sure you've gone through the following things:
@@ -30,5 +36,9 @@ At this point, you should create a pull request in GitHub to merge your branch/f
 
 After your amendment has been proposed, it will be voted on (again, see the constitutuion for more details about this process).
 If you amendment passes, congratulations!
-The process is almost finished, all you need to do is have someone with permission (i.e. the club president) approve your pull request.
-This person should then make a new release of the constitution (in GitHub) and distrubute the new constitution wherever necessary.
+The process is almost finished, most of the work now needs to be done by a club administration member (someone with administrator rights on GitHub).
+Either you or the club administration member will need to put the amendment information into the Enabling Clause (Amendment Number, Name, and date passed) and commit this to the branch/fork that the pull request is based on.
+Next, you should wait for the automated build to finish and you should double-check to ensure that everything looks right.
+Now, you're ready to merge the changes into master.
+The club administration member should approve the pull request in GitHub and you can then merge the branch into `master`.
+Finally, the club administration member should then wait for the automated build to finish before [making a new release](https://github.com/RITFIRSTRobotics/constitution/releases/new), waiting for new automated build to finish, and finally distrubuting the new constitution wherever necessary (where the version info should look like `v#.#-0-gcommit`).

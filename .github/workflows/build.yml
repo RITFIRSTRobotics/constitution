@@ -8,7 +8,7 @@
 # @author Connor Henley, @thatging3rkid
 name: "Build PDF"
 
-on: push
+on: [push, release]
 
 jobs:
   build:
