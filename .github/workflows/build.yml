@@ -17,7 +17,8 @@ jobs:
     steps:
       # checkout the repository
       - uses: actions/checkout@v2
-      - run: git fetch --prune --unshallow # get all history for all tags and branches
+      - run: git fetch --depth=1 origin +refs/tags/*:refs/tags/* # fetch all tags
+      - run: git fetch --no-tags --prune --depth=1 origin +refs/heads/*:refs/remotes/origin/* # fetch all branches
 
       # install required packages
       - name: Configure
