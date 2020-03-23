@@ -4,11 +4,19 @@
 #     - builds the document and generates a PDF
 #     - uploads the resulting PDF as an artifact
 #
-# @version v1.0
+# @version v1.0.1
 # @author Connor Henley, @thatging3rkid
 name: "Build PDF"
 
-on: [push, release]
+on:
+  # run on a push to every branch but master
+  push:
+    branches-ignore:
+      - "master"
+
+  # run on every new release (only once)
+  release:
+    types: [created]
 
 jobs:
   build:
@@ -17,6 +25,7 @@ jobs:
     steps:
       # checkout the repository
       - uses: actions/checkout@v2
+      - run: git switch - # undo the detached HEAD state (this will also switch to master, but we'll checkout later)
       - run: git fetch --depth=1 origin +refs/tags/*:refs/tags/* # fetch all tags
       - run: git fetch --no-tags --prune --depth=1 origin +refs/heads/*:refs/remotes/origin/* # fetch all branches
       - run: git fetch --prune --unshallow # fetch history for tags and branches
