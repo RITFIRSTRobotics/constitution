@@ -25,7 +25,7 @@ jobs:
     steps:
       # checkout the repository
       - uses: actions/checkout@v2
-      - run: ./.github/git-ci-setup.sh # fetch more history and setup the repository
+      - run: ./.github/git-ci-setup.sh ${GITHUB_REF#refs/heads/} # fetch more history and setup the repository
 
       # install required packages
       - name: Configure
