@@ -3,6 +3,7 @@
 #
 # @author Connor Henley, @thatging3rkid
 branch=$1
+printf "on branch %s\n" ${branch}
 
 git fetch --depth=1 origin +refs/tags/*:refs/tags/* # fetch all tags
 git fetch --no-tags --prune --depth=1 origin +refs/heads/*:refs/remotes/origin/* # fetch all branches
@@ -13,4 +14,5 @@ if ! git symbolic-ref --short HEAD; then
     git switch -
 fi
 
-git checkout ${branch} # checkout the code that we're currently working on
+# checkout the code that we're currently working on
+git checkout ${branch}
