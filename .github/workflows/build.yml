@@ -8,15 +8,15 @@
 # @author Connor Henley, @thatging3rkid
 name: "Build PDF"
 
-on: [push]
-#  # run on a push to every branch but master
-#  push:
-#    branches-ignore:
-#      - 'master'
-#
-#  # run on every new release (only once)
-#  release:
-#    types: [created]
+on:
+  # run on a push to every branch but master
+  push:
+    branches-ignore:
+      - 'master'
+
+  # run on every new release (only once)
+  release:
+    types: [created]
 
 jobs:
   build:
