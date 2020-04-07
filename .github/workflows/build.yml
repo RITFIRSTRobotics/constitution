@@ -4,7 +4,7 @@
 #     - builds the document and generates a PDF
 #     - uploads the resulting PDF as an artifact
 #
-# @version v1.0.1
+# @version v1.0.2
 # @author Connor Henley, @thatging3rkid
 name: "Build PDF"
 
@@ -12,7 +12,7 @@ on:
   # run on a push to every branch but master
   push:
     branches-ignore:
-      - "master"
+      - 'master'
 
   # run on every new release (only once)
   release:
@@ -23,9 +23,23 @@ jobs:
     runs-on: ubuntu-latest # use latest since this won't be run often (backup: 18.04)
 
     steps:
+      # checkout the repository (pull master on release)
+      - uses: actions/checkout@v2
+        if: github.event_name == 'release'
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.release.target_commitish }}
+          
       # checkout the repository
       - uses: actions/checkout@v2
-      - run: ./.github/git-ci-setup.sh ${GITHUB_REF#refs/heads/} # fetch more history and setup the repository
+        if: github.event_name == 'push'
+        with:
+          fetch-depth: 0
+      
+      # get more git history
+      - run: git fetch --depth=1 origin +refs/tags/*:refs/tags/* # fetch all tags
+      - run: git fetch --no-tags --prune --depth=1 origin +refs/heads/*:refs/remotes/origin/* # fetch all branches
+      - run: git fetch --prune --unshallow # fetch history for tags and branches
 
       # install required packages
       - name: Configure
