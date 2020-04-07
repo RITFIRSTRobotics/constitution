@@ -33,3 +33,7 @@ FORCE: ; @# build rule that will never generate output, making any dependent rul
 .PHONY: clean
 clean:
 	-/bin/rm -f buildinfo.tex watermark.tex *.log *.pdf *.aux *.dvi
+
+.PHONY: spell
+spell:
+	aspell --lang=en --mode=tex check constitution.tex
