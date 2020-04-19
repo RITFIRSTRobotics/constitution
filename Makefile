@@ -40,4 +40,4 @@ clean:
 
 .PHONY: spell
 spell:
-	aspell --lang=en --mode=tex check constitution.tex
+	aspell --lang=en --home-dir=. --personal=constitution.tex.dict --mode=tex check constitution.tex
