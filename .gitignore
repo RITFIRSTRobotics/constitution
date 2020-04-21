@@ -282,3 +282,6 @@ watermark.tex
 
 # aspell config files
 .aspell*
+
+# amendment proposal files
+amendment/
