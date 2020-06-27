@@ -38,7 +38,7 @@ After your amendment has been proposed, it will be voted on (again, see the cons
 If you amendment passes, congratulations!
 The process is almost finished, most of the work now needs to be done by a club administration member (someone with administrator rights on GitHub).
 Either you or the club administration member will need to put the amendment information into the Enabling Clause (Amendment Number, Name, and date passed) and commit this to the branch/fork that the pull request is based on.
-Next, you should wait for the automated build to finish and you should double-check to ensure that everything looks right.
-Now, you're ready to merge the changes into master.
-The club administration member should approve the pull request in GitHub and you can then merge the branch into `master`.
-Finally, the club administration member should then wait for the automated build to finish before [making a new release](https://github.com/RITFIRSTRobotics/constitution/releases/new), waiting for new automated build to finish, and finally distrubuting the new constitution wherever necessary (where the version info should look like `v#.#-0-gcommit`).
+Next, you should wait for the automated build to finish and you should double-check to ensure that everything looks right (besides the watermark).
+Now, you're ready to merge the changes into `master`, which can be done by the club administation member by approving the pull request.
+Finally, the club administration member should [make a new release](https://github.com/RITFIRSTRobotics/constitution/releases/new) and wait for the automated build to finish (make sure that the version info looks like `v#.#-0-gcommit`).
+The new constitution is now official and can be distributed wherever necessary.

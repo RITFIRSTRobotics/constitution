@@ -18,6 +18,10 @@ constitution-raw.aux: constitution.tex buildinfo.tex watermark.tex
 	latex $(LATEX_ARGS) -jobname=$(subst .aux,,$@) $<
 
 constitution.pdf: constitution-raw.pdf
+	@# don't use compression at the moment
+	cp $< $@
+
+constitution-compressed.pdf: constitution-raw.pdf
 	@# compress the pdf that pdflatex created
 	@# see: https://tex.stackexchange.com/questions/18987/how-to-make-the-pdfs-produced-by-pdflatex-smaller/19047#19047
 	gs $(GS_ARGS) -sOutputFile=$@ $<
@@ -33,3 +37,7 @@ FORCE: ; @# build rule that will never generate output, making any dependent rul
 .PHONY: clean
 clean:
 	-/bin/rm -f buildinfo.tex watermark.tex *.log *.pdf *.aux *.dvi
+
+.PHONY: spell
+spell:
+	aspell --lang=en --home-dir=. --personal=constitution.tex.dict --mode=tex check constitution.tex
