@@ -20,7 +20,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest # use latest since this won't be run often (backup: 18.04)
+    runs-on: ubuntu-22.04  # this has been tested to work with Ubuntu 22.04, some day it will need to be updated!
 
     steps:
       # checkout the repository (pull master on release)
