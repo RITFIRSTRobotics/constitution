@@ -8,9 +8,6 @@
 # @author Connor Henley, @thatging3rkid
 name: "Build PDF"
 
-runs:
-  using: 'node16'  # use latest LTS version of NodeJS for GitHub actions (like checkout)
-
 on:
   # run on a push to every branch but master
   push:
@@ -27,14 +24,14 @@ jobs:
 
     steps:
       # checkout the repository (pull master on release)
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         if: github.event_name == 'release'
         with:
           fetch-depth: 0
           ref: ${{ github.event.release.target_commitish }}
           
       # checkout the repository
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         if: github.event_name == 'push'
         with:
           fetch-depth: 0
