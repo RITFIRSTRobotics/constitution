@@ -21,9 +21,18 @@ if ! [ -x "$(command -v pdflatex)" ]; then
     fi
 
     # Setup MiKTeX and enable auto-package installation
-    sudo miktexsetup --shared=yes finish && sudo initexmf --admin --set-config-value [MPM]AutoInstall=1
-    sudo mpm --admin --set-repository=http://mirrors.rit.edu/CTAN/systems/win32/miktex/tm/packages/
-    sudo mpm --admin --update-db # update database, should fix auto-package installation
+    sudo miktexsetup --shared=yes finish
+    sudo initexmf --admin --set-config-value [MPM]AutoInstall=1
+
+    # update the database, this should allow auto-install to work
+    sudo mpm --admin --update-db
+
+    # according to this comment, MiKTeX needs to be updated multiple times smh
+    # https://github.com/MiKTeX/miktex/issues/724#issuecomment-785949728
+    sudo mpm --admin --update
+    mpm --update
+    sudo mpm --admin --update
+    mpm --update
 fi
 
 # Install GhostScript (used for compression)
